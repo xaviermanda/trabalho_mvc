@@ -1,0 +1,22 @@
+{
+  "name": "mvc-fornecedores-clientes",
+  "version": "1.0.0",
+  "description": "Projeto MVC com Express, EJS e Firebase Realtime Database - Categorias, Fornecedores e Clientes",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "firebase-admin": "^13.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
