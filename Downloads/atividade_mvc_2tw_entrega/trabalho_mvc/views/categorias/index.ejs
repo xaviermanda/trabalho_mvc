@@ -1,2 +1,130 @@
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Categorias</title><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"></head><body>
-<%- include('../partials/nav') %><div class="container mt-4"><div class="card shadow-sm mb-4"><div class="card-body"><h5 class="mb-3">➕ Nova Categoria</h5><form action="/categorias/salvar" method="POST"><div class="mb-3"><label class="form-label">Nome</label><input type="text" name="nome" class="form-control" required></div><button class="btn btn-primary">Salvar</button></form></div></div><h4>📂 Categorias</h4><div class="table-responsive"><table class="table table-bordered table-hover"><thead class="table-dark"><tr><th>ID</th><th>Nome</th></tr></thead><tbody><% categorias.forEach(cat => { %><tr><td><%= cat.id %></td><td><%= cat.nome %></td></tr><% }) %></tbody></table></div><a href="/" class="btn btn-secondary w-100">Voltar</a></div><%- include('../partials/footer') %></body></html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Categorias</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <%- include('../partials/nav') %>
+
+    <div class="container mt-4">
+
+        <!-- CADASTRAR CATEGORIA -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+
+                <h5 class="mb-3">➕ Nova Categoria</h5>
+
+                <form action="/categorias/salvar" method="POST">
+
+                    <div class="mb-3">
+                        <label class="form-label">Nome</label>
+
+                        <input
+                            type="text"
+                            name="nome"
+                            class="form-control"
+                            required>
+                    </div>
+
+                    <button class="btn btn-primary">
+                        Salvar
+                    </button>
+
+                </form>
+
+            </div>
+        </div>
+
+        <!-- LISTA DE CATEGORIAS -->
+        <h4>📂 Categorias</h4>
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <% categorias.forEach(cat => { %>
+
+                        <tr>
+
+                            <td>
+                                <%= cat.id %>
+                            </td>
+
+                            <td>
+                                <%= cat.nome %>
+                            </td>
+
+                            <td>
+
+                                <!-- EDITAR -->
+                                <form
+                                    action="/categorias/editar/<%= cat.id %>"
+                                    method="POST"
+                                    class="d-inline">
+
+                                    <input
+                                        type="text"
+                                        name="nome"
+                                        value="<%= cat.nome %>"
+                                        class="form-control d-inline-block"
+                                        style="width: 180px;"
+                                        required>
+
+                                    <button class="btn btn-warning btn-sm">
+                                        ✏️ Editar
+                                    </button>
+
+                                </form>
+
+                                <!-- EXCLUIR -->
+                                <a
+                                    href="/categorias/excluir/<%= cat.id %>"
+                                    class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Tem certeza que deseja excluir esta categoria?')">
+
+                                    🗑️ Excluir
+
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                    <% }) %>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <a href="/" class="btn btn-secondary w-100">
+            Voltar
+        </a>
+
+    </div>
+
+    <%- include('../partials/footer') %>
+
+</body>
+
+</html>
