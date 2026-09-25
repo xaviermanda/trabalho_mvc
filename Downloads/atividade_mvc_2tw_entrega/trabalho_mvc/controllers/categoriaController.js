@@ -29,7 +29,29 @@ exports.salvar = async (req, res, next) => {
     }
 };
 
-// EDITAR
+// ABRIR TELA DE EDITAR
+exports.telaEditar = async (req, res, next) => {
+    try {
+        const id = req.params.id;
+
+        const categorias = await model.listar();
+
+        const categoria = categorias.find(c => c.id === id);
+
+        if (!categoria) {
+            return res.redirect('/categorias');
+        }
+
+        res.render('categorias/editar', {
+            categoria
+        });
+
+    } catch (err) {
+        next(err);
+    }
+};
+
+// SALVAR EDIÇÃO
 exports.editar = async (req, res, next) => {
     try {
         const id = req.params.id;

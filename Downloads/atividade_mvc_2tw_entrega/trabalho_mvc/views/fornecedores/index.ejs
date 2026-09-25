@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Fornecedores</title>
 
     <link
@@ -19,6 +20,7 @@
 
         <!-- CADASTRAR FORNECEDOR -->
         <div class="card shadow-sm mb-4">
+
             <div class="card-body">
 
                 <h5 class="mb-3">➕ Novo Fornecedor</h5>
@@ -26,17 +28,25 @@
                 <form action="/fornecedores/salvar" method="POST">
 
                     <div class="mb-3">
-                        <label class="form-label">Nome</label>
+
+                        <label class="form-label">
+                            Nome
+                        </label>
 
                         <input
                             type="text"
                             name="nome"
                             class="form-control"
                             required>
+
                     </div>
 
+
                     <div class="mb-3">
-                        <label class="form-label">CNPJ</label>
+
+                        <label class="form-label">
+                            CNPJ
+                        </label>
 
                         <input
                             type="text"
@@ -44,18 +54,23 @@
                             class="form-control"
                             placeholder="00.000.000/0000-00"
                             required>
+
                     </div>
 
-                    <button class="btn btn-primary">
+
+                    <button type="submit" class="btn btn-primary">
                         Salvar
                     </button>
 
                 </form>
 
             </div>
+
         </div>
 
+
         <!-- LISTA DE FORNECEDORES -->
+
         <h4>🏢 Fornecedores</h4>
 
         <div class="table-responsive">
@@ -63,12 +78,14 @@
             <table class="table table-bordered table-hover">
 
                 <thead class="table-dark">
+
                     <tr>
                         <th>ID</th>
                         <th>Nome</th>
                         <th>CNPJ</th>
                         <th>Ações</th>
                     </tr>
+
                 </thead>
 
                 <tbody>
@@ -92,34 +109,18 @@
                             <td>
 
                                 <!-- EDITAR -->
-                                <form
-                                    action="/fornecedores/editar/<%= f.id %>"
-                                    method="POST"
-                                    class="d-inline">
 
-                                    <input
-                                        type="text"
-                                        name="nome"
-                                        value="<%= f.nome %>"
-                                        class="form-control d-inline-block mb-1"
-                                        style="width: 150px;"
-                                        required>
+                                <a
+                                    href="/fornecedores/editar/<%= f.id %>"
+                                    class="btn btn-warning btn-sm">
 
-                                    <input
-                                        type="text"
-                                        name="cnpj"
-                                        value="<%= f.cnpj %>"
-                                        class="form-control d-inline-block mb-1"
-                                        style="width: 180px;"
-                                        required>
+                                    ✏️ Editar
 
-                                    <button class="btn btn-warning btn-sm">
-                                        ✏️ Editar
-                                    </button>
+                                </a>
 
-                                </form>
 
                                 <!-- EXCLUIR -->
+
                                 <a
                                     href="/fornecedores/excluir/<%= f.id %>"
                                     class="btn btn-danger btn-sm"
@@ -140,6 +141,9 @@
             </table>
 
         </div>
+
+
+        <!-- VOLTAR -->
 
         <a href="/" class="btn btn-secondary w-100">
             Voltar

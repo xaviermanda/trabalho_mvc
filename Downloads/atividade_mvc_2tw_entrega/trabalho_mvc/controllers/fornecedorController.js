@@ -1,7 +1,6 @@
 const model = require('../models/fornecedorModel');
 
 exports.index = async (req, res, next) => {
-
     try {
         res.render('fornecedores/index', {
             fornecedores: await model.listar()
@@ -9,11 +8,9 @@ exports.index = async (req, res, next) => {
     } catch (err) {
         next(err);
     }
-
 };
 
 exports.salvar = async (req, res, next) => {
-
     try {
 
         const nome = String(req.body.nome || '').trim();
@@ -33,15 +30,37 @@ exports.salvar = async (req, res, next) => {
     } catch (err) {
         next(err);
     }
-
 };
 
-// EDITAR
-exports.editar = async (req, res, next) => {
-
+// ABRIR TELA DE EDITAR
+exports.telaEditar = async (req, res, next) => {
     try {
 
         const id = req.params.id;
+
+        const fornecedores = await model.listar();
+
+        const fornecedor = fornecedores.find(f => f.id === id);
+
+        if (!fornecedor) {
+            return res.redirect('/fornecedores');
+        }
+
+        res.render('fornecedores/editar', {
+            fornecedor
+        });
+
+    } catch (err) {
+        next(err);
+    }
+};
+
+// SALVAR EDIÇÃO
+exports.editar = async (req, res, next) => {
+    try {
+
+        const id = req.params.id;
+
         const nome = String(req.body.nome || '').trim();
         const cnpj = String(req.body.cnpj || '').trim();
 
@@ -59,12 +78,10 @@ exports.editar = async (req, res, next) => {
     } catch (err) {
         next(err);
     }
-
 };
 
 // EXCLUIR
 exports.excluir = async (req, res, next) => {
-
     try {
 
         const id = req.params.id;
@@ -76,5 +93,4 @@ exports.excluir = async (req, res, next) => {
     } catch (err) {
         next(err);
     }
-
 };

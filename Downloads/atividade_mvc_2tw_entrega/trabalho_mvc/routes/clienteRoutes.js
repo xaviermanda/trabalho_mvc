@@ -8,7 +8,10 @@ router.get('/', controller.index);
 
 router.post('/salvar', controller.salvar);
 
-// EDITAR
+// ABRIR TELA DE EDITAR
+router.get('/editar/:id', controller.telaEditar);
+
+// SALVAR EDIÇÃO
 router.post('/editar/:id', controller.editar);
 
 // EXCLUIR
