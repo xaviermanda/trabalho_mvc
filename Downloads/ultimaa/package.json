@@ -1,0 +1,8 @@
+{
+  "name": "clientes-api-rosa",
+  "version": "1.0.0",
+  "description": "API REST de clientes com interface web rosa e branca, MVC",
+  "main": "index.js",
+  "scripts": { "start": "node index.js" },
+  "dependencies": { "cors": "^2.8.5", "express": "^4.21.2" }
+}
